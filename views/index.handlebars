@@ -1,0 +1,32 @@
+<div class="row p-5">
+    <img src="/assets/img/burger.jpg" alt="burger" class="mx-auto">
+</div>
+<div class="text-center">
+    <div class="row w-50 mx-auto">
+        <div class="col-6">
+            <span>To eat</span>
+            <ul>
+                {{#each burgers}}
+                    {{#unless devoured}}
+                        <li data-id="{{id}}">{{burger_name}}</li>
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-6">
+            <span>eaten</span>
+            <ul>
+                {{#each burgers}}
+                    {{#if devoured}}
+                        <li data-id="{{id}}">{{burger_name}}</li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <form action="/api/burgers" method="POST" class="mx-auto">
+        <label for="burger_name">New burger:</label>
+        <input type="text" name="burger_name" maxlength="100">
+        <button type="submit">Submit</button>
+    </form>
+</div>
