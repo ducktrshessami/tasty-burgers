@@ -17,7 +17,7 @@ router.get("/", function(req, res) {
 // add a new burger
 router.post("/api/burgers", function(req, res) {
     burger.add(req.body.burger_name)
-        .then(() => res.status(200).redirect("/"))
+        .then(() => res.status(200).end())
         .catch(err => res.status(500).json(err));
 });
 
