@@ -8,7 +8,7 @@
             <ul>
                 {{#each burgers}}
                     {{#unless devoured}}
-                        <li data-id="{{id}}">{{burger_name}}</li>
+                        {{>listed}}
                     {{/unless}}
                 {{/each}}
             </ul>
@@ -18,7 +18,7 @@
             <ul>
                 {{#each burgers}}
                     {{#if devoured}}
-                        <li data-id="{{id}}">{{burger_name}}</li>
+                        {{>devoured}}
                     {{/if}}
                 {{/each}}
             </ul>
