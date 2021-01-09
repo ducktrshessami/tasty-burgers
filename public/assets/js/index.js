@@ -22,6 +22,11 @@ $(document).ready(function() {
 
     // Devour a burger
     $(".devour-btn").click(function(event) {
-
+        let id = $(event.target).parent().data("id");
+        $.ajax({
+            url: "/api/burgers/" + id,
+            method: "put"
+        })
+            .then(() => location.reload());
     });
 });
