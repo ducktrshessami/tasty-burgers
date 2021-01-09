@@ -3,8 +3,15 @@ const burger = require("../models/burger");
 
 var router = express.Router();
 
+// index
 router.get("/", function(req, res) {
-
+    burger.list()
+        .then(data => {
+            res.status(200).render("index", { burgers: data });
+        })
+        .catch(err => {
+            res.status(500).send(err);
+        });
 });
 
 router.get("/assets/:type/:file", function(req, res) {
