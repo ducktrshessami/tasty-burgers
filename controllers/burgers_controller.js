@@ -22,7 +22,7 @@ router.post("/api/burgers", function(req, res) {
 });
 
 // devour a burger by id
-router.put("/api/bugers/:id", function(req, res) {
+router.put("/api/burgers/:id", function(req, res) {
     burger.devour(req.params.id)
         .then(() => res.status(200).end())
         .catch(err => res.status(500).json(err));
