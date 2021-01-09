@@ -14,17 +14,6 @@ router.get("/", function(req, res) {
         .catch(err => res.status(500).send(err));
 });
 
-// index assets
-router.get("/assets/:type/:file", function(req, res) {
-    let filePath = path.join(assetsDir, req.params.type, req.params.file);
-    if (fs.existsSync(filePath)) {
-        res.status(200).sendFile(filePath);
-    }
-    else {
-        res.status(404).end();
-    }
-});
-
 // add a new burger
 router.post("/api/burgers", function(req, res) {
     burger.add(req.body.burger_name)
