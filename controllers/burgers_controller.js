@@ -1,5 +1,9 @@
 const express = require("express");
+const fs = require("fs");
+const path = require("path");
 const burger = require("../models/burger");
+
+const assetsDir = path.resolve(__dirname, "..", "public", "assets");
 
 var router = express.Router();
 
@@ -14,8 +18,15 @@ router.get("/", function(req, res) {
         });
 });
 
+// index assets
 router.get("/assets/:type/:file", function(req, res) {
-
+    let filePath = path.join(assetsDir, req.params.type, req.params.file);
+    if (fs.existsSync(filePath)) {
+        res.status(200).sendFile(filePath);
+    }
+    else {
+        res.status(404).end();
+    }
 });
 
 router.post("/api/burgers", function(req, res) {
