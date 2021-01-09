@@ -2,10 +2,13 @@
 SQL ORM
 
 selectAll
+get all data from a table
 
 insertOne
+insert values into a table
 
 updateOne
+update a table with a new value given a condition
 */
 
 const connection = require("./connection");
@@ -21,13 +24,13 @@ function query(query, values) {
 }
 
 module.exports = {
-    selectAll: function() {
-
+    selectAll: function(table) {
+        return query(`select * from ${table}`);
     },
-    insertOne: function() {
-
+    insertOne: function(table, data) {
+        return query(`insert into ${table} (${Object.keys(data).join(',')}) values (?)`, Object.values(data));
     },
-    updateOne: function() {
-
+    updateOne: function(table, data, condition) {
+        
     }
 };
