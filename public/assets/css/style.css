@@ -1,0 +1,9 @@
+body {
+    background-color: #A7E9F7;
+}
+
+@media (min-width: 768px) {
+    .w-md-50 {
+        width: 50%;
+    }
+}
