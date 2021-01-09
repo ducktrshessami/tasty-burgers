@@ -31,6 +31,7 @@ module.exports = {
         return query(`insert into ${table} (${Object.keys(data).join(',')}) values (?)`, Object.values(data));
     },
     updateOne: function(table, data, condition) {
-        
+        let updates = Object.keys(data).map(col => `${col} = ?`).join(',');
+        return query(`update ${table} set ${updates} where ${condition}`, Object.values(data));
     }
 };
